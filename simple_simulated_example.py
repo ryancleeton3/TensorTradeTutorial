@@ -1,6 +1,6 @@
-from tensortrade.exchnages.simulated import FBMExchange
+from tensortrade.exchanges.simulated import FBMExchange
 from tensortrade.features.scalers import MinMaxNormalizer
-from tensortrade.features.stationarity import FactionalDifference
+from tensortrade.features.stationarity import FractionalDifference
 from tensortrade.features import FeaturePipeline
 from tensortrade.rewards import SimpleProfitStrategy
 from tensortrade.actions import DiscreteActionStrategy
@@ -34,7 +34,7 @@ from stable_baselines import PPO2
 
 model = PPO2
 policy = MlpLnLstmPolicy
-params = {'learning_rate':1e-5}
+params = {'learning_rate':1e-5,'nminibatches':1}
 
 # training a strategy
 
