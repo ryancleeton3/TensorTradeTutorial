@@ -6,6 +6,8 @@ from tensortrade.rewards import SimpleProfitStrategy
 from tensortrade.actions import DiscreteActionStrategy
 from tensortrade.environments import TradingEnvironment
 
+# creating an environment 
+
 normalize_price = MinMaxNormalizer(['open', 'high', 'low', 'close'])
 difference = FractionalDifference(difference_order=0.6)
 feature_pipeline = FeaturePipeline(steps=[normalize_price,difference])
@@ -24,3 +26,23 @@ environment = TradingEnvironment(exchange=exchange,
 								reward_strategy=reward_strategy,
 								feature_pipeline=feature_pipeline)
 
+
+# defining the agent
+
+from stable_baselines.common.policies import MlpLnLstmPolicy
+from stable_baselines import PPO2
+
+model = PPO2
+policy = MlpLnLstmPolicy
+params = {'learning_rate':1e-5}
+
+# training a strategy
+
+from tensortrade.strategies import StableBaselinesTradingStrategy
+
+strategy = StableBaselinesTradingStrategy(environment=environment,
+										model=model,
+										policy=policy,
+										model_kwargs=params)
+
+performance = strategy.run(steps=10)
