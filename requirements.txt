@@ -50,7 +50,7 @@ stable-baselines==2.8.0
 stochastic==0.4.0
 TA-Lib==0.4.17
 tensorboard==1.13.1
-tensorflow==1.13.1
+tensorflow==2.5.0
 tensorflow-estimator==1.13.0
 Tensorforce==0.5.2
 tensortrade==0.0.1a18
