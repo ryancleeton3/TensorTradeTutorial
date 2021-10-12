@@ -30,7 +30,7 @@ more-itertools==7.2.0
 mpi4py==3.0.2
 multidict==4.5.2
 numpy==1.16.4
-opencv-python==4.1.1.26
+opencv-python==4.2.0.32
 packaging==19.2
 pandas==0.25.0
 pluggy==0.13.0
